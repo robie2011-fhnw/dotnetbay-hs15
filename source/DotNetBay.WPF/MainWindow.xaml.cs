@@ -49,6 +49,11 @@ namespace DotNetBay.WPF
             get { return this.auctions; }
         }
 
+        private void btnNewAuction_Click(object sender, RoutedEventArgs e)
+        {
+            var newAuctionview = new NewAuctionView();
+            newAuctionview.ShowDialog();
+        }
     }
 
 

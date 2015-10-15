@@ -23,7 +23,7 @@
             <ColumnDefinition Width="400*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="button" Content="New Auction" Grid.Column="1" Margin="0" Grid.Row="1"/>
+        <Button x:Name="btnNewAuction" Content="New Auction" Grid.Column="1" Margin="0" Grid.Row="1" Click="btnNewAuction_Click"/>
         <DataGrid Name="mainWindowGrid" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="0" ItemsSource="{Binding Auctions}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Title" Width="SizeToCells" IsReadOnly="True">
