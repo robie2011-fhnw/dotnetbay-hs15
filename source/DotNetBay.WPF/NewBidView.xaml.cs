@@ -23,5 +23,23 @@ namespace DotNetBay.WPF
         {
             InitializeComponent();
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var bidValue = Convert.ToDouble(this.textBox.Text);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Invalid Values!");
+            }
+        }
     }
 }
