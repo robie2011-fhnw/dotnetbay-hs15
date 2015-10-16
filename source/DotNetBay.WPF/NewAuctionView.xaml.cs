@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,15 @@ namespace DotNetBay.WPF
         public NewAuctionView()
         {
             InitializeComponent();
+        }
+
+        private void ShowFileDialog(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog();
+            if(dialog.ShowDialog() == true)
+            {
+                txtImagePath.Text = dialog.FileName;
+            }
         }
     }
 }
