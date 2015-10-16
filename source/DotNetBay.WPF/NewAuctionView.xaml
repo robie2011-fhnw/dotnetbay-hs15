@@ -8,30 +8,47 @@
         Title="NewAuctionView" Height="300" Width="420.169">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="7*"/>
-            <RowDefinition Height="16*"/>
-            <RowDefinition Height="12*"/>
-            <RowDefinition Height="100*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="15*"/>
-            <ColumnDefinition Width="91*"/>
-            <ColumnDefinition Width="187*"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="label" Content="Add New Auction" HorizontalAlignment="Left" Margin="15,14,-0.4,20.669" Grid.RowSpan="3" Width="279" Grid.ColumnSpan="3"/>
-        <Label x:Name="label1" Content="Title" Margin="15,31.6,0.4,0.4" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txtTitle" Grid.Column="1" Margin="90.8,31.6,9.6,1.4" Grid.Row="1" Grid.RowSpan="2" TextWrapping="Wrap" Text="TextBox" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txtDescription" Grid.Column="1" HorizontalAlignment="Left" Height="72" Margin="90.8,22.6,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="178" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <TextBox x:Name="txtStartprice" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="90.8,70.6,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="178" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="txtImagePath" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="91,147,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="262" Grid.ColumnSpan="2"/>
-        <Label x:Name="label2" Content="Start Price" HorizontalAlignment="Left" Margin="15,66.6,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="27" Width="91"/>
-        <Label x:Name="label2_Copy" Content="Description" HorizontalAlignment="Left" Margin="15,23.6,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="71" Width="91"/>
-        <Label x:Name="label2_Copy1" Content="Start" HorizontalAlignment="Left" Margin="15,93.6,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="27" Width="91"/>
-        <Label x:Name="label2_Copy2" Content="End" HorizontalAlignment="Left" Margin="15,120.6,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="27" Width="91"/>
-        <Label x:Name="label2_Copy3" Content="Image" HorizontalAlignment="Left" Margin="15,142.6,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="27" Width="91"/>
-        <DatePicker x:Name="dateStart" Grid.Column="1" HorizontalAlignment="Left" Margin="90.8,93.6,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="178"/>
-        <DatePicker x:Name="dateEnd" Grid.Column="1" HorizontalAlignment="Left" Margin="90.8,121.6,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="178" RenderTransformOrigin="0.493,0.387"/>
-        <Button x:Name="btnOpenDialog" Content="..." Grid.Column="2" HorizontalAlignment="Left" Margin="228,150,0,0" Grid.Row="3" VerticalAlignment="Top" Width="26" RenderTransformOrigin="-0.117,-0.468" Click="ShowFileDialog" />
+
+
+        <Label Content="Add New Auction" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
+        
+        <Label Content="Title" Grid.Row="1" Grid.Column="1" />        
+        <TextBox Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" TextWrapping="Wrap" Text="Enter Title" />
+
+        <Label Content="Description" Grid.Row="2" Grid.Column="1"  />
+        <TextBox Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" Text="Enter Description" />        
+        
+        <TextBox Grid.Column="2" Grid.Row="3" Text="0.0" />        
+        <Label Grid.Column="1" Grid.Row="3" Content="Start Price" />
+        
+        <!--<TextBox x:Name="txtImagePath" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="91,147,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="262" Grid.ColumnSpan="2"/>-->
+
+        <Label Content="Start" Grid.Row="4" Grid.Column="1"  />
+        <DatePicker x:Name="dateStart" Grid.Column="2" Grid.Row="4" />
+        
+        <Label Content="End" Grid.Row="5" Grid.Column="1"  />
+        <DatePicker x:Name="dateEnd" Grid.Column="2" Grid.Row="5" />
+
+        <Label Content="Imagepath" Grid.Row="6" Grid.Column="1"  />
+        <TextBox x:Name="txtImagepath" Grid.Column="2" Grid.Row="6" TextWrapping="Wrap" Text="" />
+        <Button x:Name="btnOpenDialog" Content="..." Grid.Column="2" HorizontalAlignment="Right" Grid.Row="6" Width="26" Click="ShowFileDialog" />
+
+        <!--<Label x:Name="label2_Copy3" Content="Image" HorizontalAlignment="Left" Margin="15,142.6,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="27" Width="91"/>-->       
+        
 
     </Grid>
 </Window>

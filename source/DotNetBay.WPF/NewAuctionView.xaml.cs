@@ -30,7 +30,7 @@ namespace DotNetBay.WPF
             var dialog = new OpenFileDialog();
             if(dialog.ShowDialog() == true)
             {
-                txtImagePath.Text = dialog.FileName;
+                txtImagepath.Text = dialog.FileName;
             }
         }
     }
