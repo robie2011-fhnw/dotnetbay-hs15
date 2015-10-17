@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DotNetBay.Core;
 using DotNetBay.Model;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace DotNetBay.WPF
 {
@@ -24,36 +25,14 @@ namespace DotNetBay.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly ObservableCollection<Auction> auctions = new ObservableCollection<Auction>();
-
-        public ObservableCollection<Auction> Auctions
-        {
-            get { return auctions; }
-        }
+        private readonly OverviewViewModel overviewViewModel;
 
         public MainWindow()
         {
-            
-            //if ((Application.Current as App) != null) // Why is this necessary?
-            //{
-                ReloadAuctions();
-            //}
-            this.DataContext = this;
-            this.InitializeComponent();
-        }
+            overviewViewModel = new OverviewViewModel(App.AuctionService, App.AuctionRunner);
+            DataContext = overviewViewModel;
 
-        private void ReloadAuctions()
-        {
-            Auctions.Clear();
-            App.AuctionService.GetAll()
-                .ToList()
-                .ForEach(a => this.Auctions.Add(a));
-        }
-
-        private void btnNewAuction_Click(object sender, RoutedEventArgs e)
-        {
-            var newAuctionview = new NewAuctionView();
-            newAuctionview.ShowDialog();
+            InitializeComponent();            
         }
     }
 }

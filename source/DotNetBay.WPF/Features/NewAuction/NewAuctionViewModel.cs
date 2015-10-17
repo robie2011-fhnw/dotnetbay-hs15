@@ -8,56 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using DotNetBay.WPF.Annotations;
 using GalaSoft.MvvmLight;
+using PropertyChanged;
 
 namespace DotNetBay.WPF
 {
+    [ImplementPropertyChanged]
     public class NewAuctionViewModel : ViewModelBase
     {
-        private string title,
-            description,
-            startPrice,
-            imagePath;
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string StartPrice { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string ImagePath { get; set; }
+        public string Errors { get; set; }
 
-        private DateTime startDate = DateTime.Now;
-        private DateTime endDate = DateTime.Now.AddDays(1);
-
-        public string Title
+        public NewAuctionViewModel()
         {
-            get { return title; }
-
-            set {
-                Console.WriteLine(value);
-                Set(() => Title, ref title, value); }
-        }
-
-        public string Description
-        {
-            get { return description;}
-            set { Set(() => Description, ref description, value); }
-        }
-
-        public string StartPrice
-        {
-            get { return startPrice; }
-            set { Set(() => StartPrice, ref startPrice, value); }
-        }
-
-        public DateTime EndDate 
-        {
-            get { return endDate;}
-            set { Set(() => EndDate, ref endDate, value); }
-        }
-
-        public DateTime StartDate
-        {
-            get { return startDate; }
-            set { Set(() => StartDate, ref startDate, value); }
-        }
-
-        public string ImagePath
-        {
-            get { return imagePath; }
-            set { Set(() => ImagePath, ref imagePath, value); }
+            StartDate = DateTime.Now;
+            EndDate = DateTime.Now.AddDays(1);
         }
     }
 }

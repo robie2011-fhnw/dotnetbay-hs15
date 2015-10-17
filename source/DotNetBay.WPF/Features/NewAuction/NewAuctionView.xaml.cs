@@ -46,21 +46,27 @@ namespace DotNetBay.WPF
 
         private void AddAuction(object sender, RoutedEventArgs e)
         {
-            var auction = new Auction
+            try
             {
-                Title = model.Title,
-                Description = model.Description,
-                StartPrice = double.Parse(model.StartPrice),
-                StartDateTimeUtc = model.StartDate,
-                EndDateTimeUtc = model.EndDate,
-                Image = File.ReadAllBytes(model.ImagePath),
-                Seller = App.MemberService.GetCurrentMember()
-            };
+                var auction = new Auction
+                {
+                    Title = model.Title,
+                    Description = model.Description,
+                    StartPrice = double.Parse(model.StartPrice),
+                    StartDateTimeUtc = model.StartDate,
+                    EndDateTimeUtc = model.EndDate,
+                    Image = File.ReadAllBytes(model.ImagePath),
+                    Seller = App.MemberService.GetCurrentMember()
+                };
 
-            App.MainRepository.Add(auction);
-            App.MainRepository.SaveChanges();
+                App.AuctionService.Save(auction);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                model.Errors = ex.Message;
+            }
             
-            this.Close();
         }
     }
 }

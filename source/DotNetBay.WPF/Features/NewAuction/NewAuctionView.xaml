@@ -24,7 +24,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>            
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15"/>
@@ -46,10 +47,10 @@
         <TextBox Grid.Column="2" Grid.Row="3" Text="{Binding Path=StartPrice, UpdateSourceTrigger=PropertyChanged}" />                
 
         <Label Content="Start" Grid.Row="4" Grid.Column="1"  />
-        <DatePicker Grid.Column="2" Grid.Row="4" SelectedDate="{Binding Path=StartDate}" />
+        <DatePicker Grid.Column="2" Grid.Row="4" SelectedDate="{Binding Path=StartDate}" SelectedDateFormat="Long" />
         
         <Label Content="End" Grid.Row="5" Grid.Column="1"  />
-        <DatePicker Grid.Column="2" Grid.Row="5" SelectedDate="{Binding Path=EndDate}" />
+        <DatePicker Grid.Column="2" Grid.Row="5" SelectedDate="{Binding Path=EndDate}" SelectedDateFormat="Long" />
 
         <Label Content="Imagepath" Grid.Row="6" Grid.Column="1"  />
         <TextBox Grid.Column="2" Grid.Row="6" TextWrapping="Wrap" Text="{Binding Path=ImagePath}" />
@@ -60,5 +61,6 @@
             <Button Content="Cancel" Width="100px" Click="Cancel"  HorizontalAlignment="Left" />
         </WrapPanel>
 
+        <Label Foreground="Red" FontWeight="Bold" Content="{Binding Path=Errors}" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" VerticalAlignment="Bottom"></Label>
     </Grid>
 </Window>

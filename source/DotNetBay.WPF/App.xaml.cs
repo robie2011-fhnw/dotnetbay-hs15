@@ -22,7 +22,7 @@ namespace DotNetBay.WPF
     {
         public static App Instance { get; } = ((App)Application.Current);
 
-        public static readonly IMainRepository MainRepository;
+        private static readonly IMainRepository MainRepository; //do not need direct access from outside?
         public static readonly IAuctionRunner AuctionRunner;
         public static readonly IMemberService MemberService;
         public static readonly IAuctionService AuctionService;
@@ -50,7 +50,7 @@ namespace DotNetBay.WPF
 
         private static void InitTestAuctionData()
         {
-            if (AuctionService.GetAll().Any())
+            if (!AuctionService.GetAll().Any())
             {
                 var me = MemberService.GetCurrentMember();
                 AuctionService.Save(new Auction
