@@ -18,25 +18,27 @@ namespace DotNetBay.WPF
     /// </summary>
     public partial class App : Application
     {
-        public IMainRepository MainRepository { get; } = new FileSystemMainRepository("file.dat");
+        public static App Instance { get; } = ((App)Application.Current);
 
-        public IAuctionRunner AuctionRunner { get { return auctionRunner; }}
-        private static IAuctionRunner auctionRunner;
-        public App()
+        public static readonly IMainRepository MainRepository;
+        public static readonly IAuctionRunner AuctionRunner;
+        public static readonly IMemberService MemberService;
+
+        static App()
         {
-            auctionRunner = new AuctionRunner(this.MainRepository);
-            this.FillRepo();
-            this.AuctionRunner.Start();
+            MainRepository = new FileSystemMainRepository("file.dat");
+            AuctionRunner = new AuctionRunner(MainRepository);
+            MemberService = new SimpleMemberService(MainRepository);
 
-
-            
+            InitRepository();
+            AuctionRunner.Start();
         }
 
 
-        public void FillRepo()
+        private static void InitRepository()
         {
-            var memberService = new SimpleMemberService(this.MainRepository);
-            var service = new AuctionService(this.MainRepository, memberService);
+            var memberService = new SimpleMemberService(MainRepository);
+            var service = new AuctionService(MainRepository, memberService);
             if (!service.GetAll().Any())
             {
                 var me = memberService.GetCurrentMember();

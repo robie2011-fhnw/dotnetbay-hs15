@@ -36,7 +36,7 @@ namespace DotNetBay.WPF
                 var bidValue = Convert.ToDouble(this.textBox.Text);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Invalid Values!");
             }

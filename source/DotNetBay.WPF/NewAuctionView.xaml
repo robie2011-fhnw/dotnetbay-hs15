@@ -6,6 +6,13 @@
         xmlns:local="clr-namespace:DotNetBay.WPF"
         mc:Ignorable="d"
         Title="NewAuctionView" Height="300" Width="420.169">
+
+    <Window.Resources>
+        <Style x:Key="blueTest" TargetType="TextBox">
+            <Setter Property="Background" Value="AliceBlue" />
+        </Style>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -15,6 +22,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>            
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15"/>
@@ -27,13 +35,13 @@
         <Label Content="Add New Auction" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
         
         <Label Content="Title" Grid.Row="1" Grid.Column="1" />        
-        <TextBox Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" TextWrapping="Wrap" Text="Enter Title" />
+        <TextBox x:Name="txtTitle" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" TextWrapping="Wrap" Text="Enter Title" Style="{StaticResource blueTest}" />
 
-        <Label Content="Description" Grid.Row="2" Grid.Column="1"  />
+        <Label x:Name="txtDescription" Content="Description" Grid.Row="2" Grid.Column="1"  />
         <TextBox Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" Text="Enter Description" />        
         
-        <TextBox Grid.Column="2" Grid.Row="3" Text="0.0" />        
         <Label Grid.Column="1" Grid.Row="3" Content="Start Price" />
+        <TextBox x:Name="txtStartPrice" Grid.Column="2" Grid.Row="3" Text="0.0" />        
         
         <!--<TextBox x:Name="txtImagePath" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="91,147,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="262" Grid.ColumnSpan="2"/>-->
 
@@ -47,8 +55,10 @@
         <TextBox x:Name="txtImagepath" Grid.Column="2" Grid.Row="6" TextWrapping="Wrap" Text="" />
         <Button x:Name="btnOpenDialog" Content="..." Grid.Column="2" HorizontalAlignment="Right" Grid.Row="6" Width="26" Click="ShowFileDialog" />
 
-        <!--<Label x:Name="label2_Copy3" Content="Image" HorizontalAlignment="Left" Margin="15,142.6,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="27" Width="91"/>-->       
-        
+        <WrapPanel Grid.Column="2" Grid.Row="7" >
+            <Button Content="Add Auction" Width="100px" Click="AddAuction" HorizontalAlignment="Left" />
+            <Button Content="Cancel" Width="100px" Click="Cancel"  HorizontalAlignment="Left" />
+        </WrapPanel>
 
     </Grid>
 </Window>

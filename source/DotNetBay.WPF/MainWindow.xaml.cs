@@ -26,14 +26,15 @@ namespace DotNetBay.WPF
     {
         public MainWindow()
         {
-          
             if ((Application.Current as App) != null)
             {
-                var service = new AuctionService(((App)Application.Current).MainRepository, new SimpleMemberService(((App)Application.Current).MainRepository));
-                foreach (var auction in service.GetAll())
-                {
-                    this.Auctions.Add(auction);
-                }
+                var service = new AuctionService(
+                    App.MainRepository, 
+                    new SimpleMemberService(App.MainRepository));
+
+                service.GetAll()
+                    .ToList()
+                    .ForEach(a => this.Auctions.Add(a));
             }
             this.DataContext = this;
             this.InitializeComponent();
@@ -61,14 +62,8 @@ namespace DotNetBay.WPF
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value.GetType() == typeof (bool))
-            {
-                bool b = (bool) value;
-                if (b)
-                    return "Offen";
-                return "Abgeschlossen";
-            }
-            return "";
+            //should always work. Otherwise we have corrupt data and the application shall crash
+            return (bool)value ? "Offen" : "Abgeschlossen";            
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
