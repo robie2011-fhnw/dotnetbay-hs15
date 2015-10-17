@@ -46,10 +46,10 @@
                 <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Path=IsRunning, Converter={StaticResource BooleanToStateConverter}}" />
                 <DataGridTextColumn Header="Start Price" Width="*" Binding="{Binding Path=StartPrice}" />
                 <DataGridTextColumn Header="Current Price" Width="*" Binding="{Binding Path=CurrentPrice}" />
-                <DataGridTextColumn Header="Bids" Width="*" Binding="{Binding Path=Bids}" />
+                <DataGridTextColumn Header="Bids" Width="*" Binding="{Binding Path=Bids.Count}" />
                 <DataGridTextColumn Header="Starts" Width="*" Binding="{Binding Path=StartDateTimeUtc}" />
                 <DataGridTextColumn Header="Ends" Width="*" Binding="{Binding Path=EndDateTimeUtc}" />
-                <DataGridTextColumn Header="Seller" Width="*" Binding="{Binding Path=Seller}" />
+                <DataGridTextColumn Header="Seller" Width="*" Binding="{Binding Path=Seller.DisplayName}" />
                 <DataGridTextColumn Header="Current Winner" Width="*" Binding="{Binding Path=Winner}" />
                 <DataGridTextColumn Header="Closed" Width="*" Binding="{Binding Path=CloseDateTimeUtc}" />
                 <DataGridTextColumn Header="Winner" Width="*" Binding="{Binding Path=Winner}" />

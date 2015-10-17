@@ -24,30 +24,30 @@ namespace DotNetBay.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            if ((Application.Current as App) != null)
-            {
-                var service = new AuctionService(
-                    App.MainRepository, 
-                    new SimpleMemberService(App.MainRepository));
-
-                service.GetAll()
-                    .ToList()
-                    .ForEach(a => this.Auctions.Add(a));
-            }
-            this.DataContext = this;
-            this.InitializeComponent();
-        }
-
-
-
-
         private readonly ObservableCollection<Auction> auctions = new ObservableCollection<Auction>();
 
         public ObservableCollection<Auction> Auctions
         {
-            get { return this.auctions; }
+            get { return auctions; }
+        }
+
+        public MainWindow()
+        {
+            
+            //if ((Application.Current as App) != null) // Why is this necessary?
+            //{
+                ReloadAuctions();
+            //}
+            this.DataContext = this;
+            this.InitializeComponent();
+        }
+
+        private void ReloadAuctions()
+        {
+            Auctions.Clear();
+            App.AuctionService.GetAll()
+                .ToList()
+                .ForEach(a => this.Auctions.Add(a));
         }
 
         private void btnNewAuction_Click(object sender, RoutedEventArgs e)

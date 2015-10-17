@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DotNetBay.WPF"
-        mc:Ignorable="d"
-        Title="NewAuctionView" Height="300" Width="420.169">
+        d:DataContext="{d:DesignInstance Type=local:NewAuctionViewModel}"
+        mc:Ignorable="d"        
+        Title="NewAuctionView" Height="300" Width="420.169"
+        >
 
     <Window.Resources>
         <Style x:Key="blueTest" TargetType="TextBox">
@@ -35,25 +37,23 @@
         <Label Content="Add New Auction" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
         
         <Label Content="Title" Grid.Row="1" Grid.Column="1" />        
-        <TextBox x:Name="txtTitle" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" TextWrapping="Wrap" Text="Enter Title" Style="{StaticResource blueTest}" />
+        <TextBox Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" TextWrapping="Wrap" Text="{Binding Path=Title, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource blueTest}" />
 
-        <Label x:Name="txtDescription" Content="Description" Grid.Row="2" Grid.Column="1"  />
-        <TextBox Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" Text="Enter Description" />        
+        <Label Content="Description" Grid.Row="2" Grid.Column="1"  />
+        <TextBox Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}" />        
         
         <Label Grid.Column="1" Grid.Row="3" Content="Start Price" />
-        <TextBox x:Name="txtStartPrice" Grid.Column="2" Grid.Row="3" Text="0.0" />        
-        
-        <!--<TextBox x:Name="txtImagePath" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="91,147,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="262" Grid.ColumnSpan="2"/>-->
+        <TextBox Grid.Column="2" Grid.Row="3" Text="{Binding Path=StartPrice, UpdateSourceTrigger=PropertyChanged}" />                
 
         <Label Content="Start" Grid.Row="4" Grid.Column="1"  />
-        <DatePicker x:Name="dateStart" Grid.Column="2" Grid.Row="4" />
+        <DatePicker Grid.Column="2" Grid.Row="4" SelectedDate="{Binding Path=StartDate}" />
         
         <Label Content="End" Grid.Row="5" Grid.Column="1"  />
-        <DatePicker x:Name="dateEnd" Grid.Column="2" Grid.Row="5" />
+        <DatePicker Grid.Column="2" Grid.Row="5" SelectedDate="{Binding Path=EndDate}" />
 
         <Label Content="Imagepath" Grid.Row="6" Grid.Column="1"  />
-        <TextBox x:Name="txtImagepath" Grid.Column="2" Grid.Row="6" TextWrapping="Wrap" Text="" />
-        <Button x:Name="btnOpenDialog" Content="..." Grid.Column="2" HorizontalAlignment="Right" Grid.Row="6" Width="26" Click="ShowFileDialog" />
+        <TextBox Grid.Column="2" Grid.Row="6" TextWrapping="Wrap" Text="{Binding Path=ImagePath}" />
+        <Button Content="..." Grid.Column="2" HorizontalAlignment="Right" Grid.Row="6" Width="26" Click="ShowFileDialog" />
 
         <WrapPanel Grid.Column="2" Grid.Row="7" >
             <Button Content="Add Auction" Width="100px" Click="AddAuction" HorizontalAlignment="Left" />

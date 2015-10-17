@@ -22,8 +22,11 @@ namespace DotNetBay.WPF
     /// </summary>
     public partial class NewAuctionView : Window
     {
+        private readonly NewAuctionViewModel model;
         public NewAuctionView()
         {
+            model = new NewAuctionViewModel();
+            DataContext = model;
             InitializeComponent();
         }
 
@@ -32,7 +35,7 @@ namespace DotNetBay.WPF
             var dialog = new OpenFileDialog();
             if(dialog.ShowDialog() == true)
             {
-                txtImagepath.Text = dialog.FileName;
+                model.ImagePath = dialog.FileName;
             }
         }
 
@@ -43,17 +46,20 @@ namespace DotNetBay.WPF
 
         private void AddAuction(object sender, RoutedEventArgs e)
         {
-            App.MainRepository.Add(new Auction
+            var auction = new Auction
             {
-                Title = txtTitle.Text,
-                Description = txtDescription.Content.ToString(),
-                StartPrice = double.Parse(txtStartPrice.Text),
-                StartDateTimeUtc = dateStart.SelectedDate.Value,
-                EndDateTimeUtc = dateEnd.SelectedDate.Value,
-                Image = File.ReadAllBytes(txtImagepath.Text),
+                Title = model.Title,
+                Description = model.Description,
+                StartPrice = double.Parse(model.StartPrice),
+                StartDateTimeUtc = model.StartDate,
+                EndDateTimeUtc = model.EndDate,
+                Image = File.ReadAllBytes(model.ImagePath),
                 Seller = App.MemberService.GetCurrentMember()
-            });
+            };
+
+            App.MainRepository.Add(auction);
             App.MainRepository.SaveChanges();
+            
             this.Close();
         }
     }

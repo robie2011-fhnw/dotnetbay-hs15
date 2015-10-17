@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using DotNetBay.Core;
@@ -23,26 +25,35 @@ namespace DotNetBay.WPF
         public static readonly IMainRepository MainRepository;
         public static readonly IAuctionRunner AuctionRunner;
         public static readonly IMemberService MemberService;
+        public static readonly IAuctionService AuctionService;
 
         static App()
         {
+            SetupCulture();
             MainRepository = new FileSystemMainRepository("file.dat");
             AuctionRunner = new AuctionRunner(MainRepository);
             MemberService = new SimpleMemberService(MainRepository);
+            AuctionService = new AuctionService(MainRepository, MemberService);
 
-            InitRepository();
+            InitTestAuctionData();
             AuctionRunner.Start();
         }
 
-
-        private static void InitRepository()
+        private static void SetupCulture()
         {
-            var memberService = new SimpleMemberService(MainRepository);
-            var service = new AuctionService(MainRepository, memberService);
-            if (!service.GetAll().Any())
+            // Do not work
+            // todo https://weblog.west-wind.com/posts/2009/Jun/14/WPF-Bindings-and-CurrentCulture-Formatting
+            CultureInfo culture = new CultureInfo(ConfigurationManager.AppSettings["DefaultCulture"]);            
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
+        }
+
+        private static void InitTestAuctionData()
+        {
+            if (AuctionService.GetAll().Any())
             {
-                var me = memberService.GetCurrentMember();
-                service.Save(new Auction
+                var me = MemberService.GetCurrentMember();
+                AuctionService.Save(new Auction
                 {
                     Title = "My First Auction",
                     StartDateTimeUtc = DateTime.UtcNow.AddSeconds(10),
