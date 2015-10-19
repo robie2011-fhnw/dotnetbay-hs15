@@ -33,7 +33,7 @@ namespace DotNetBay.WPF
         {
             try
             {
-                var bidValue = Convert.ToDouble(this.textBox.Text);
+                //var bidValue = Convert.ToDouble(this.textBox.Text);
 
             }
             catch (Exception)

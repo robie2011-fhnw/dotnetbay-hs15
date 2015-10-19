@@ -7,20 +7,20 @@
         mc:Ignorable="d"
         Title="NewBidView" Height="335.075" Width="300">
     <Grid>
-        <Label x:Name="label" Content="Place Bid For Auction" HorizontalAlignment="Left" Margin="15,14,-0.4,220.669" Width="279"/>
-        <Label x:Name="label1" Content="Title" Margin="15,46,187.6,200.4"/>
-        <Label x:Name="label2" Content="Start Price" HorizontalAlignment="Left" Margin="15,180,0,0" VerticalAlignment="Top" Height="27" Width="91"/>
-        <Label x:Name="label2_Copy" Content="Description" HorizontalAlignment="Left" Margin="15,142,0,0" VerticalAlignment="Top" Height="33" Width="91"/>
-        <Label x:Name="label3" Content="Label" HorizontalAlignment="Left" Margin="124,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.452,0.216" Width="160"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="60" Margin="124,81,0,0" VerticalAlignment="Top" Width="144"/>
-        <Label x:Name="label2_Copy1" Content="Description" HorizontalAlignment="Left" Margin="124,141,0,0" VerticalAlignment="Top" Height="33" Width="91"/>
-        <Label x:Name="label2_Copy2" Content="234" HorizontalAlignment="Left" Margin="124,179,0,0" VerticalAlignment="Top" Height="27" Width="91"/>
-        <Label x:Name="label2_Copy3" Content="Current Price" HorizontalAlignment="Left" Margin="15,207,0,0" VerticalAlignment="Top" Height="27" Width="91"/>
-        <Label x:Name="label2_Copy4" Content="0" HorizontalAlignment="Left" Margin="124,206,0,0" VerticalAlignment="Top" Height="27" Width="91"/>
-        <Label x:Name="label2_Copy5" Content="Your Bid" HorizontalAlignment="Left" Margin="15,234,0,0" VerticalAlignment="Top" Height="27" Width="91"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="133,238,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="button" Content="Cancel" HorizontalAlignment="Left" Margin="209,276,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <Button x:Name="button1" Content="Place Bid" HorizontalAlignment="Left" Margin="124,276,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Place Bid For Auction" HorizontalAlignment="Left" Margin="15,14,-0.4,220.669" Width="279"/>
+        <Label Content="Title" Margin="15,46,187.6,200.4"/>
+        <Label Content="Start Price" HorizontalAlignment="Left" Margin="15,180,0,0" VerticalAlignment="Top" Height="27" Width="91"/>
+        <Label Content="Description" HorizontalAlignment="Left" Margin="15,142,0,0" VerticalAlignment="Top" Height="33" Width="91"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="124,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.452,0.216" Width="160"/>
+        <Image HorizontalAlignment="Left" Height="60" Margin="124,81,0,0" VerticalAlignment="Top" Width="144"/>
+        <Label Content="Description" HorizontalAlignment="Left" Margin="124,141,0,0" VerticalAlignment="Top" Height="33" Width="91"/>
+        <Label Content="234" HorizontalAlignment="Left" Margin="124,179,0,0" VerticalAlignment="Top" Height="27" Width="91"/>
+        <Label Content="Current Price" HorizontalAlignment="Left" Margin="15,207,0,0" VerticalAlignment="Top" Height="27" Width="91"/>
+        <Label Content="0" HorizontalAlignment="Left" Margin="124,206,0,0" VerticalAlignment="Top" Height="27" Width="91"/>
+        <Label Content="Your Bid" HorizontalAlignment="Left" Margin="15,234,0,0" VerticalAlignment="Top" Height="27" Width="91"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="133,238,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="209,276,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <Button Content="Place Bid" HorizontalAlignment="Left" Margin="124,276,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

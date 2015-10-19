@@ -12,37 +12,41 @@ using GalaSoft.MvvmLight.Command;
 
 namespace DotNetBay.WPF
 {
+    //TODO: Use AuctionViewModel
     public class OverviewViewModel
     {
         public readonly ObservableCollection<Auction> auctions = new ObservableCollection<Auction>();
         private readonly IAuctionService auctionService;
         public ICommand NewAuction { get; private set; }
-
-        public ObservableCollection<Auction> Auctions 
-        {
-            get { return auctions; }
-        }
+        public ObservableCollection<Auction> Auctions => this.auctions;
 
         public OverviewViewModel(IAuctionService auctionService, IAuctionRunner auctionRunner)
         {
             this.auctionService = auctionService;
-            this.ReloadAuctions();
+            AddNewstAuctionToMainView();
 
-            auctionRunner.Auctioneer.AuctionStarted += ReloadAuctions;
-            auctionRunner.Auctioneer.AuctionEnded += ReloadAuctions;
-            auctionRunner.Auctioneer.BidAccepted += ReloadAuctions;
-            auctionRunner.Auctioneer.BidDeclined += ReloadAuctions;
+            //auctionRunner.Auctioneer.AuctionStarted += ReloadAuctions;
+            //auctionRunner.Auctioneer.AuctionEnded += ReloadAuctions;
+            //auctionRunner.Auctioneer.BidAccepted += ReloadAuctions;
+            //auctionRunner.Auctioneer.BidDeclined += ReloadAuctions;
 
-            NewAuction = new RelayCommand(() => new NewAuctionView().ShowDialog(), () => true);             
+            NewAuction = new RelayCommand(ShowGetImageDialog, () => true);             
         }
 
-
-        private void ReloadAuctions(object sender = null, object e = null)
+        private void ShowGetImageDialog()
         {
-            Auctions.Clear();
-            auctionService.GetAll()
-                .ToList()
-                .ForEach(a => this.Auctions.Add(a));
+            new NewAuctionView().ShowDialog();
+            AddNewstAuctionToMainView();
+        }
+
+        private void AddNewstAuctionToMainView()
+        {
+            var existingAuctionIds = new HashSet<long>(Auctions.Select(a => a.Id));
+            var newAuctions = auctionService.GetAll()
+                .Where(a => !existingAuctionIds.Contains(a.Id))
+                .ToList();
+
+            newAuctions.ForEach(a => Auctions.Add(a));
         }
 
         public void AddAuctionAndNotify(Auction a)
